@@ -7,19 +7,14 @@ public class ShipMove : MonoBehaviour
     public float moveSpeed = 5f; // 이동 속도는 함선마다 조정 필요함, 테스트 빌드 속도는 5f
     public Transform ship;
     private Vector3 targetPosition;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        targetPosition = ship.position; // 시작 시 초기화
-    }
 
-    // Update is called once per frame
-    void Update()
+    // 함선 할당 함수, ShipBehavior에서 선택한 함선이 selectedShip이 되어 이동 함선, 현재 위치를 할당
+    public void AssignShip(Transform selectedShip)
     {
-        MoveShip();
+        ship = selectedShip;
+        targetPosition = ship.position;
     }
-
-    private void MoveShip() // 이동 함수
+    public void InitialMove() // 이동 함수
     {
         // 마우스 입력 처리하여 화면 좌표를 월드 좌표로 변환
         if(Input.GetMouseButtonDown(0))
@@ -27,11 +22,19 @@ public class ShipMove : MonoBehaviour
             Vector3 mouseWolrdPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWolrdPos.z = 0; // 2D 상이기에 Z는 타일 바로 위로 고정
 
-            // 입력된 마우스 월드 좌표를 셀 좌료로 변환 후 셀 중심을 지정
+            // 입력된 마우스 월드 좌표를 타일 셀 좌료로 변환 후 셀 중심을 지정
             Vector3Int cellPos = tilemap.WorldToCell(mouseWolrdPos);
             targetPosition = tilemap.GetCellCenterWorld(cellPos);
         }
-
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        // 함선이 없으면 작동 안 함
+        if (ship == null)
+        {
+            return;
+        }
         // 타겟 위치 변경이 확인될 경우 이동
         if(ship.position != targetPosition)
         {
@@ -41,4 +44,5 @@ public class ShipMove : MonoBehaviour
             ship.position = Vector3.MoveTowards(ship.position, targetPosition, moveSpeed * Time.deltaTime); // MoveTowards로 선형 이동
         }
     }
+
 }

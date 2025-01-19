@@ -1070,11 +1070,12 @@ GameObject:
   m_Component:
   - component: {fileID: 426858220}
   - component: {fileID: 426858219}
-  - component: {fileID: 426858221}
   - component: {fileID: 426858222}
+  - component: {fileID: 426858223}
+  - component: {fileID: 426858224}
   m_Layer: 0
   m_Name: ShipBase
-  m_TagString: Untagged
+  m_TagString: OurShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1149,21 +1150,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &426858221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426858218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e7c802a0b1e62a439c3ac20d6708245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemap: {fileID: 341857822}
-  moveSpeed: 5
-  ship: {fileID: 426858220}
 --- !u!60 &426858222
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1215,6 +1201,34 @@ PolygonCollider2D:
       - {x: 0, y: -0.25}
       - {x: 0.5, y: 0}
   m_UseDelaunayMesh: 0
+--- !u!114 &426858223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426858218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac1042d3d21a4b46bcedb405cf0f90f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipMoveModule: {fileID: 426858224}
+--- !u!114 &426858224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426858218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7c802a0b1e62a439c3ac20d6708245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 341857822}
+  moveSpeed: 5
+  ship: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
