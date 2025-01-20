@@ -15,12 +15,13 @@ public class ShipBehavior : MonoBehaviour
         // 각 동작은 함수로 구분 후 열거형 체크로 동작 커맨드를 인식하기
         // 마우스 좌클릭 and 선택된 함선이 있을 경우 이동
         // 마우스 좌클릭 시 함선 선택 기능
-        if(Input.GetMouseButtonDown(0) && selectedShip == null)
+        if(Input.GetMouseButtonDown(0) && selectedShip == null) // 클릭이 있고 selectedShip이 없으면 선택
         {
             SelectShip();
         }
-        else if(Input.GetMouseButtonDown(0) && selectedShip != null) // 이후 이 부분에 열거형을 통한 동작 종류 체크 추가, UI로 커맨드 입력 받기 필요
+        else if(Input.GetMouseButtonDown(0) && selectedShip != null) // 클릭이 있고 selectedShip이 있으면 명령
         {
+            // 이후 이 부분에 열거형을 통한 동작 종류 체크 추가, UI로 커맨드 입력 받기 필요
             shipMoveModule.AssignShip(selectedShip);
             shipMoveModule.InitialMove();
             Debug.Log("이동 완료");

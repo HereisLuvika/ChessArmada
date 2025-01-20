@@ -23,7 +23,7 @@ public class CameraMove : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3(moveSpeed * Time.deltaTime, -moveSpeed * Time.deltaTime);
+            transform.position += new Vector3(moveSpeed * Time.deltaTime, -moveSpeed * Time.deltaTime, 0);
         }
         else if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W))
         {
