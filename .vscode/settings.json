@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ChessArmada.sln"
+    "dotnet.defaultSolution": "ChessArmada.sln",
+    "dotnet.preferCSharpExtension": true
 }
