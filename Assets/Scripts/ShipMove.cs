@@ -14,7 +14,7 @@ public class ShipMove : MonoBehaviour
         ship = selectedShip;
         targetPosition = ship.position;
     }
-    public void InitialMove() // 이동 함수
+    public void InitialMove() // 타겟 위치 변경 함수
     {
         // 마우스 입력 처리하여 화면 좌표를 월드 좌표로 변환
         if(Input.GetMouseButtonDown(0))
@@ -30,7 +30,7 @@ public class ShipMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 함선이 없으면 작동 안 함
+        // AssignShip이 전에는 작동 안 함
         if (ship == null)
         {
             return;

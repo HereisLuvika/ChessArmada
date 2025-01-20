@@ -11,18 +11,20 @@ public class ShipBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 현재는 move 동작만 존재하여 update에 할당, 이후 ShipBehavior 열거형을 통한 동작 체크를 추가할 것
+        // 각 동작은 함수로 구분 후 열거형 체크로 동작 커맨드를 인식하기
         // 마우스 좌클릭 and 선택된 함선이 있을 경우 이동
-        if(Input.GetMouseButtonDown(0) && selectedShip != null)
+        // 마우스 좌클릭 시 함선 선택 기능
+        if(Input.GetMouseButtonDown(0) && selectedShip == null)
+        {
+            SelectShip();
+        }
+        else if(Input.GetMouseButtonDown(0) && selectedShip != null)
         {
             shipMoveModule.AssignShip(selectedShip);
             shipMoveModule.InitialMove();
             Debug.Log("이동 완료");
             selectedShip = null;
-        }
-        // 마우스 좌클릭 시 함선 선택 기능
-        else if(Input.GetMouseButtonDown(0))
-        {
-            SelectShip();
         }
     }
     // 함선 선택
@@ -42,9 +44,9 @@ public class ShipBehavior : MonoBehaviour
         else if(hit.collider == null)
         {
             selectedShip = null;
-            Debug.Log("유효하지 않은 선택 : 바다 선택됨");
+            Debug.Log("유효하지 않은 선택");
         }
-        else
+        else // 이후 hit.collider.CompareTag("HostileShip") 조건 넣을 것
         {
             selectedShip = null;
             Debug.Log("조작 대상이 아님");
