@@ -19,7 +19,7 @@ public class ShipBehavior : MonoBehaviour
         {
             SelectShip();
         }
-        else if(Input.GetMouseButtonDown(0) && selectedShip != null)
+        else if(Input.GetMouseButtonDown(0) && selectedShip != null) // 이후 이 부분에 동작 열거형을 통한 동작 종류 체크 추가, UI로 커맨드 입력 받기 필요
         {
             shipMoveModule.AssignShip(selectedShip);
             shipMoveModule.InitialMove();
